@@ -16,7 +16,7 @@ class TaskScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 60.0, left: 30.0),
+            padding: EdgeInsets.only(top: 100.0, left: 30.0),
             child: CircleAvatar(
               child: Icon(
                 Icons.list,
@@ -39,9 +39,9 @@ class TaskScreen extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 30.0),
+            padding: EdgeInsets.only(left: 30.0, bottom: 30.0),
             child: Text(
-              '12 Task',
+              '12 Tasks',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -50,12 +50,38 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
                 ),
+              ),
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Text('This is task'),
+                    trailing: Checkbox(
+                      onChanged: (bool? value) {},
+                      value: true,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('This is task'),
+                    trailing: Checkbox(
+                      onChanged: (bool? value) {},
+                      value: true,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('This is task'),
+                    trailing: Checkbox(
+                      onChanged: (bool? value) {},
+                      value: true,
+                    ),
+                  ),
+                ],
               ),
             ),
           )
