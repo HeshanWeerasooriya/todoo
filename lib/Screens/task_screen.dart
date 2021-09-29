@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todoo/widgets/tasks_list.dart';
 
+import 'add_task_screen.dart';
+
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
@@ -9,7 +11,12 @@ class TaskScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen(),
+          );
+        },
         backgroundColor: Colors.lightBlueAccent,
         child: const Icon(Icons.add),
       ),
