@@ -34,7 +34,6 @@ class TaskScreen extends StatelessWidget {
               radius: 30.0,
             ),
           ),
-          const SizedBox(height: 10.0),
           const Padding(
             padding: EdgeInsets.only(left: 30.0),
             child: Text(

@@ -19,7 +19,7 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Add Task',
               style: TextStyle(color: Colors.lightBlueAccent, fontSize: 30.0),
               textAlign: TextAlign.center,
@@ -31,12 +31,12 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             ElevatedButton(
               onPressed: () {},
-              child: Text('Add'),
+              child: const Text('Add'),
             ),
           ],
         ),
