@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatelessWidget {
-  const TaskTile({Key? key, required this.isChecked, required this.taskTitle})
+  const TaskTile(
+      {Key? key,
+      required this.taskTitle,
+      required this.isChecked,
+      required this.chechboxCallback})
       : super(key: key);
 
   final bool isChecked;
   final String taskTitle;
+  final Function chechboxCallback;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -16,10 +22,8 @@ class TaskTile extends StatelessWidget {
       ),
       trailing: Checkbox(
         value: isChecked,
-        onChanged: (bool? value) {
-          // setState(() {
-          //   isChecked = value!;
-          // });
+        onChanged: (newValue) {
+          chechboxCallback(newValue);
         },
       ),
     );
