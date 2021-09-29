@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoo/widgets/tasks_list.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -58,31 +59,7 @@ class TaskScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: ListView(
-                children: [
-                  ListTile(
-                    title: Text('This is task'),
-                    trailing: Checkbox(
-                      onChanged: (bool? value) {},
-                      value: true,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('This is task'),
-                    trailing: Checkbox(
-                      onChanged: (bool? value) {},
-                      value: true,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('This is task'),
-                    trailing: Checkbox(
-                      onChanged: (bool? value) {},
-                      value: true,
-                    ),
-                  ),
-                ],
-              ),
+              child: TasksList(),
             ),
           )
         ],
