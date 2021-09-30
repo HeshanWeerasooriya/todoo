@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoo/models/task_data.dart';
 import 'package:todoo/widgets/tasks_list.dart';
 
 import 'add_task_screen.dart';
@@ -13,9 +15,14 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-            context: context,
-            builder: (context) => AddTaskScreen(),
-          );
+              context: context,
+              builder: (context) => AddTaskScreen(
+                    adTaskCallback: (newTaskTitle) {
+                      // setState(() {
+                      //   tasks.add(Task(name: newTaskTitle));
+                      // });
+                    },
+                  ));
         },
         backgroundColor: Colors.lightBlueAccent,
         child: const Icon(Icons.add),
@@ -45,11 +52,11 @@ class TaskScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 30.0, bottom: 30.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0, bottom: 30.0),
             child: Text(
-              '12 Tasks',
-              style: TextStyle(
+              '${Provider.of<TaskData>(context).tasks.length} Tasks',
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
               ),
@@ -67,7 +74,7 @@ class TaskScreen extends StatelessWidget {
               ),
               child: TasksList(),
             ),
-          )
+          ),
         ],
       ),
     );

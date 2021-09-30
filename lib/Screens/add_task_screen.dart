@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
+class AddTaskScreen extends StatefulWidget {
+  const AddTaskScreen({Key? key, required this.adTaskCallback})
+      : super(key: key);
+
+  final Function adTaskCallback;
+
+  @override
+  State<AddTaskScreen> createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  late String newTaskTitle;
+  Function? adTaskCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +36,10 @@ class AddTaskScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             TextField(
-              decoration: InputDecoration(
+              onChanged: (String newText) {
+                newTaskTitle = newText;
+              },
+              decoration: const InputDecoration(
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.lightBlueAccent),
                 ),
@@ -35,7 +49,9 @@ class AddTaskScreen extends StatelessWidget {
               height: 10.0,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                adTaskCallback!(newTaskTitle);
+              },
               child: const Text('Add'),
             ),
           ],

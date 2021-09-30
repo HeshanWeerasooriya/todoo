@@ -1,35 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:todoo/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoo/models/task_data.dart';
 import 'package:todoo/widgets/task_tile.dart';
 
-class TasksList extends StatefulWidget {
-  const TasksList({Key? key}) : super(key: key);
-
-  @override
-  State<TasksList> createState() => _TasksListState();
-}
-
-class _TasksListState extends State<TasksList> {
-  List<Task> tasks = [
-    Task(name: 'Buy Milk'),
-    Task(name: 'Buy Egg'),
-    Task(name: 'Buy Bread'),
-  ];
+class TasksList extends StatelessWidget {
+  const TasksList({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
         return TaskTile(
-            taskTitle: tasks[index].name,
-            isChecked: tasks[index].isDone,
+            taskTitle: Provider.of<TaskData>(context).tasks[index].name,
+            isChecked: Provider.of<TaskData>(context).tasks[index].isDone,
             chechboxCallback: (bool checkboxState) {
-              setState(() {
-                tasks[index].toggleDone();
-              });
+              // setState(() {
+              //   widget.tasks[index].toggleDone();
+              // });
             });
       },
-      itemCount: tasks.length,
+      itemCount: Provider.of<TaskData>(context).tasks.length,
     );
   }
 }
