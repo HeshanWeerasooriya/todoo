@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoo/models/task_data.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  const AddTaskScreen({Key? key, required this.adTaskCallback})
-      : super(key: key);
-
-  final Function adTaskCallback;
-
-  @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
-}
-
-class _AddTaskScreenState extends State<AddTaskScreen> {
-  late String newTaskTitle;
-  Function? adTaskCallback;
+class AddTaskScreen extends StatelessWidget {
+  const AddTaskScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String? newTaskTitle;
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -36,7 +30,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               textAlign: TextAlign.center,
             ),
             TextField(
-              onChanged: (String newText) {
+              onChanged: (newText) {
                 newTaskTitle = newText;
               },
               decoration: const InputDecoration(
@@ -50,7 +44,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                adTaskCallback!(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle!);
+                Navigator.pop(context);
               },
               child: const Text('Add'),
             ),

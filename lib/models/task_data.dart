@@ -3,12 +3,19 @@ import 'package:todoo/models/task.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> tasks = [
-    Task(name: 'Buy Milk'),
-    Task(name: 'Buy Egg'),
-    Task(name: 'Buy Bread'),
+    Task(name: 'EAT 😋🍕🍔🍽 '),
+    Task(name: 'SLEEP 🛌'),
+    Task(name: 'CODE 👨‍💻'),
+    Task(name: 'REPEAT 🔁'),
   ];
 
   int get taskCount {
     return tasks.length;
+  }
+
+  void addTask(String newTaskTitle) {
+    final task = Task(name: newTaskTitle);
+    tasks.add(task);
+    notifyListeners();
   }
 }

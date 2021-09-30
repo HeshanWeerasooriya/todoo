@@ -18,7 +18,8 @@ class TaskTile extends StatelessWidget {
       title: Text(
         taskTitle,
         style: TextStyle(
-            decoration: isChecked ? TextDecoration.lineThrough : null),
+            decoration: isChecked ? TextDecoration.lineThrough : null,
+            fontSize: 20.0),
       ),
       trailing: Checkbox(
         value: isChecked,
